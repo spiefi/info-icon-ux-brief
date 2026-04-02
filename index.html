@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ⓘ Info Icon — UX Brief for Browser Extension Modal</title>
+<title>ⓘ Info Trigger — UX Patterns for Extension Modal</title>
 <style>
   :root {
     --bg: #0f0f11;
@@ -17,8 +17,8 @@
     --green: #059669;
     --amber: #d97706;
     --sky: #0ea5e9;
-    --white: #ffffff;
     --igraal-orange: #FD5A13;
+    --igraal-red: #8B1A1A;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -39,9 +39,9 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(124,58,237,0.12);
-    border: 1px solid rgba(124,58,237,0.25);
-    color: var(--purple);
+    background: rgba(253,90,19,0.12);
+    border: 1px solid rgba(253,90,19,0.25);
+    color: var(--igraal-orange);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -57,7 +57,7 @@
     letter-spacing: -0.03em;
     margin-bottom: 16px;
   }
-  .header h1 span { color: var(--purple); }
+  .header h1 span { color: var(--igraal-orange); }
   .header .subtitle {
     font-size: 18px;
     color: var(--muted);
@@ -101,11 +101,11 @@
     margin-bottom: 48px;
   }
 
-  /* PROBLEM */
+  /* PROBLEM GRID */
   .problem-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    gap: 40px;
     align-items: start;
   }
   .problem-visual {
@@ -125,150 +125,123 @@
     font-weight: 700;
   }
   .mockup-label.bad { color: var(--accent); }
-  .mockup-label.good { color: var(--green); }
 
-  /* EXTENSION FRAME */
-  .ext-frame {
-    width: 260px;
+  /* EXTENSION POPUP — faithful to screenshot */
+  .ext-popup {
+    width: 280px;
     background: #ffffff;
-    border-radius: 12px;
+    border-radius: 16px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     overflow: hidden;
     font-family: -apple-system, sans-serif;
-  }
-  .ext-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 12px;
-    border-bottom: 1px solid #e5e5ea;
-  }
-  .ext-toolbar-icons {
-    display: flex;
-    gap: 8px;
-  }
-  .ext-toolbar-icon {
-    font-size: 12px;
-    color: #999;
-  }
-  .ext-content {
-    padding: 20px;
+    padding: 28px 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 6px;
+    position: relative;
   }
-  .ext-logo {
-    width: 32px;
-    height: 32px;
+  .ext-popup-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 28px;
+    height: 28px;
     background: var(--igraal-orange);
-    border-radius: 6px;
+    border-radius: 5px;
     transform: rotate(45deg);
     display: flex;
     align-items: center;
     justify-content: center;
-    align-self: flex-start;
-    transform-origin: center;
   }
-  .ext-logo-letter {
+  .ext-popup-logo span {
     transform: rotate(-45deg);
     color: white;
     font-weight: 800;
-    font-size: 16px;
+    font-size: 14px;
   }
-  .ext-headline {
+  .ext-popup-headline {
     font-family: Georgia, 'Times New Roman', serif;
     font-style: italic;
-    color: #8B1A1A;
-    font-size: 20px;
+    color: var(--igraal-red);
+    font-size: 22px;
     text-align: center;
+    margin-top: 8px;
   }
-  .ext-illustration {
-    font-size: 48px;
+  .ext-popup-illus {
+    font-size: 64px;
     text-align: center;
     line-height: 1;
+    margin: 8px 0;
   }
-  .ext-badge {
+  .ext-popup-badge {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    background: var(--purple);
-    color: white;
-    font-size: 9px;
+    gap: 5px;
+    background: #FFF3E0;
+    border: 1.5px solid #FFD699;
+    color: #1c1c1e;
+    font-size: 11px;
     font-weight: 700;
-    padding: 5px 12px;
+    padding: 5px 14px;
     border-radius: 100px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.04em;
   }
-  .ext-value-card {
-    background: #f5f5f7;
-    border-radius: 14px;
-    padding: 16px;
-    text-align: center;
-    width: 100%;
+  .ext-popup-badge-icon {
+    font-size: 13px;
+    color: var(--igraal-orange);
   }
-  .ext-value-text {
-    font-size: 16px;
-    font-weight: 700;
+  .ext-popup-value {
+    font-size: 22px;
+    font-weight: 800;
     color: #1c1c1e;
-    line-height: 1.4;
+    text-align: center;
+    margin-top: 10px;
+    line-height: 1.3;
   }
-  .ext-info-inline {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 16px;
-    height: 16px;
-    border: 1.5px solid #999;
-    border-radius: 50%;
-    font-size: 9px;
-    font-weight: 700;
+  .ext-popup-sub {
+    font-size: 15px;
     color: #999;
-    vertical-align: middle;
-    margin-left: 3px;
+    text-align: center;
   }
-  .ext-cta {
+  .ext-popup-cta {
     background: #1c1c1e;
     color: white;
     border-radius: 100px;
-    padding: 14px;
+    padding: 16px;
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     width: 100%;
+    margin-top: 16px;
   }
-  .ext-dismiss {
-    font-size: 12px;
-    color: #666;
+  .ext-popup-dismiss {
+    font-size: 13px;
+    color: #1c1c1e;
+    font-weight: 500;
     text-align: center;
+    margin-top: 8px;
   }
 
-  /* ANNOTATION */
-  .annotation {
-    position: relative;
-  }
-  .callout-line {
-    position: absolute;
-    border: 1.5px dashed var(--accent);
-  }
-  .callout-tag {
-    position: absolute;
-    background: var(--accent);
-    color: white;
-    font-size: 9px;
+  /* INFO ICON VARIANTS */
+  .info-inline-current {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    font-size: 13px;
     font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
+    color: #bbb;
+    vertical-align: middle;
+    margin-left: 6px;
   }
 
   /* ISSUE LIST */
-  .issue-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+  .issue-list { display: flex; flex-direction: column; gap: 16px; }
   .issue-item {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -276,15 +249,15 @@
     border-radius: 12px;
     padding: 16px 20px;
   }
-  .issue-item.context { border-left-color: var(--sky); }
+  .issue-item.info { border-left-color: var(--sky); }
   .issue-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
   .issue-desc { font-size: 13px; color: var(--muted); }
 
-  /* PATTERN GRID */
+  /* PATTERN CARDS */
   .pattern-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 28px;
   }
   .pattern-card {
     background: var(--surface);
@@ -293,12 +266,12 @@
     overflow: hidden;
     transition: border-color 0.2s;
   }
-  .pattern-card:hover { border-color: var(--purple); }
+  .pattern-card:hover { border-color: var(--igraal-orange); }
   .pattern-card.recommended { border-color: rgba(5,150,105,0.4); }
   .pattern-preview {
     background: var(--surface2);
-    padding: 32px 24px;
-    min-height: 320px;
+    padding: 32px 20px;
+    min-height: 440px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -310,7 +283,6 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: 6px;
   }
   .pattern-name { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
   .pattern-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 12px; }
@@ -328,201 +300,46 @@
   .badge.best { background: rgba(5,150,105,0.15); color: #34d399; border: 1px solid rgba(5,150,105,0.25); }
   .badge.good { background: rgba(14,165,233,0.12); color: #38bdf8; border: 1px solid rgba(14,165,233,0.2); }
   .badge.alt { background: rgba(217,119,6,0.12); color: #fbbf24; border: 1px solid rgba(217,119,6,0.2); }
-
-  .pros-cons {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-top: 12px;
-  }
-  .pro, .con, .note {
-    display: flex;
-    align-items: flex-start;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--muted);
-  }
+  .badge.avoid { background: rgba(232,64,64,0.12); color: #f87171; border: 1px solid rgba(232,64,64,0.2); }
+  .pros-cons { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+  .pro, .con, .note { display: flex; align-items: flex-start; gap: 6px; font-size: 12px; color: var(--muted); }
   .pro::before { content: '✓'; color: #34d399; font-weight: 700; flex-shrink: 0; }
   .con::before { content: '✗'; color: #f87171; font-weight: 700; flex-shrink: 0; }
   .note::before { content: '→'; color: var(--sky); font-weight: 700; flex-shrink: 0; }
 
-  /* MINI EXT */
-  .mini-ext {
-    width: 200px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-    overflow: hidden;
-    font-family: -apple-system, sans-serif;
+  /* HOVER STATES SECTION */
+  .states-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
   }
-  .mini-ext-bar {
-    padding: 5px 8px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: flex-end;
-    gap: 6px;
+  .state-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
   }
-  .mini-ext-bar span { font-size: 10px; color: #ccc; }
-  .mini-ext-body {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .mini-logo {
-    width: 22px;
-    height: 22px;
-    background: var(--igraal-orange);
-    border-radius: 4px;
-    transform: rotate(45deg);
-    align-self: flex-start;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .mini-logo span {
-    transform: rotate(-45deg);
-    color: white;
-    font-weight: 800;
+  .state-label {
     font-size: 11px;
-  }
-  .mini-headline {
-    font-family: Georgia, serif;
-    font-style: italic;
-    color: #8B1A1A;
-    font-size: 14px;
-    text-align: center;
-  }
-  .mini-illus { font-size: 32px; text-align: center; }
-  .mini-badge {
-    background: var(--purple);
-    color: white;
-    font-size: 7px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 100px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  .mini-value-card {
-    background: #f5f5f7;
-    border-radius: 10px;
-    padding: 10px 12px;
-    text-align: center;
-    width: 100%;
-  }
-  .mini-value-text {
-    font-size: 12px;
-    font-weight: 700;
-    color: #1c1c1e;
-    line-height: 1.3;
-  }
-  .mini-cta {
-    background: #1c1c1e;
-    color: white;
-    border-radius: 100px;
-    padding: 10px;
-    text-align: center;
-    font-size: 11px;
-    font-weight: 600;
-    width: 100%;
-  }
-  .mini-dismiss {
-    font-size: 9px;
-    color: #999;
-    text-align: center;
-  }
-  .mini-info-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    font-size: 10px;
-    font-weight: 800;
-    flex-shrink: 0;
-  }
-  .mini-info-btn.outline { border: 1.5px solid #bbb; color: #888; }
-  .mini-info-btn.filled { background: var(--purple); color: white; }
-  .mini-info-btn.ghost { background: rgba(0,0,0,0.06); color: #666; }
-  .mini-info-btn.orange { background: var(--igraal-orange); color: white; }
-
-  /* TOOLTIP */
-  .mini-tooltip {
-    background: #1c1c1e;
-    color: white;
-    font-size: 9px;
-    padding: 8px 10px;
-    border-radius: 8px;
-    line-height: 1.4;
-    width: 100%;
-    position: relative;
-  }
-  .mini-tooltip::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    right: 16px;
-    width: 0; height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid #1c1c1e;
-  }
-  .mini-tooltip.arrow-center::before { right: auto; left: 50%; transform: translateX(-50%); }
-
-  /* DROPDOWN */
-  .mini-dropdown {
-    background: white;
-    border: 1px solid #e5e5ea;
-    border-radius: 10px;
-    padding: 10px;
-    width: 100%;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  }
-  .mini-dropdown-title {
-    font-size: 10px;
-    font-weight: 800;
-    color: #1c1c1e;
-    margin-bottom: 6px;
-  }
-  .mini-dropdown-body {
-    font-size: 8px;
-    color: #666;
-    line-height: 1.5;
-  }
-
-  /* COMPARISON TABLE */
-  .comparison-wrap {
-    overflow-x: auto;
-  }
-  .comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    min-width: 700px;
-  }
-  .comparison-table th {
-    text-align: left;
-    padding: 12px 16px;
     color: var(--muted);
-    font-size: 11px;
-    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 16px;
   }
-  .comparison-table td {
+  .state-demo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
     padding: 16px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: top;
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 12px;
   }
-  .comparison-table tr:last-child td { border-bottom: none; }
-  .comparison-table tr:hover td { background: rgba(255,255,255,0.02); }
-  .td-pattern { font-weight: 700; }
-  .check { color: #34d399; }
-  .cross { color: #f87171; }
+  .state-desc { font-size: 12px; color: var(--muted); }
 
   /* RECOMMENDATION */
   .rec-card {
@@ -540,62 +357,12 @@
   .rec-card-desc { font-size: 14px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
   .spec-list { display: flex; flex-direction: column; gap: 10px; }
   .spec-item { display: flex; gap: 10px; font-size: 13px; }
-  .spec-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--green);
-    margin-top: 7px;
-    flex-shrink: 0;
-  }
-  .spec-dot.purple { background: var(--purple); }
+  .spec-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
   .spec-dot.orange { background: var(--igraal-orange); }
+  .spec-dot.green { background: var(--green); }
+  .spec-dot.red { background: var(--accent); }
   .spec-content { color: var(--muted); }
   .spec-content strong { color: var(--text); }
-
-  /* NALU */
-  .nalu-section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 28px;
-    margin-top: 32px;
-  }
-  .nalu-title {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .nalu-tag {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 100px;
-    background: rgba(253,90,19,0.12);
-    color: var(--igraal-orange);
-    border: 1px solid rgba(253,90,19,0.25);
-  }
-  .nalu-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .nalu-item {
-    background: var(--surface2);
-    border-radius: 12px;
-    padding: 16px;
-  }
-  .nalu-item-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
-  .nalu-item-desc { font-size: 12px; color: var(--muted); }
-  .nalu-item code {
-    background: rgba(255,255,255,0.06);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 11px;
-    color: var(--igraal-orange);
-  }
 
   /* FOOTER */
   .footer {
@@ -610,15 +377,30 @@
   }
   .footer strong { color: var(--text); }
 
+  /* ANTI-PATTERN CARD */
+  .anti-card {
+    background: var(--surface);
+    border: 1px solid rgba(232,64,64,0.25);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .anti-preview {
+    background: rgba(232,64,64,0.04);
+    padding: 32px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .anti-info { padding: 20px; }
+
   @media (max-width: 900px) {
-    .pattern-grid { grid-template-columns: 1fr 1fr; }
+    .pattern-grid, .states-grid { grid-template-columns: 1fr 1fr; }
     .problem-grid { grid-template-columns: 1fr; }
-    .nalu-grid { grid-template-columns: 1fr; }
     .header, .section { padding: 40px 24px; }
     .header h1 { font-size: 36px; }
   }
   @media (max-width: 600px) {
-    .pattern-grid { grid-template-columns: 1fr; }
+    .pattern-grid, .states-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -627,24 +409,24 @@
 <!-- HEADER -->
 <div class="header">
   <div class="header-tag">🧭 UX Brief · April 2026</div>
-  <h1>ⓘ Info Icon <span>Patterns</span><br>for Extension Modal</h1>
-  <p class="subtitle">How to surface offer details in the iGraal browser extension without polluting the hero message. Desktop-first, extension-aware.</p>
+  <h1>The ⓘ <span>Trigger</span><br>Done Right</h1>
+  <p class="subtitle">Where to place the info trigger in the iGraal extension popup — so it's findable, tappable, and doesn't mess with the hero message.</p>
   <div class="meta">
     <div class="meta-item">
       <span class="meta-label">For</span>
       <span class="meta-value">Daria · iGraal Extension</span>
     </div>
     <div class="meta-item">
-      <span class="meta-label">Based on</span>
-      <span class="meta-value">Scout Research · Info Icon Taxonomy</span>
-    </div>
-    <div class="meta-item">
       <span class="meta-label">Platform</span>
       <span class="meta-value">Desktop browser extension</span>
     </div>
     <div class="meta-item">
+      <span class="meta-label">Scope</span>
+      <span class="meta-value">Trigger placement only — opens separate popup</span>
+    </div>
+    <div class="meta-item">
       <span class="meta-label">Recommendation</span>
-      <span class="meta-value">Pattern A — Link chip + dropdown</span>
+      <span class="meta-value">Pattern A — standalone row below value</span>
     </div>
   </div>
 </div>
@@ -652,56 +434,45 @@
 <!-- PROBLEM -->
 <div class="section">
   <div class="section-label">01 — Current State</div>
-  <div class="section-title">What's wrong right now</div>
-  <p class="section-desc">The ⓘ icon is embedded inline in the value proposition copy. On desktop this isn't a tap target issue — it's a hierarchy, discoverability, and semantic problem.</p>
+  <div class="section-title">What's wrong with the trigger</div>
+  <p class="section-desc">The ⓘ is currently inline in the value proposition. It's a trigger for a details popup — it needs to be clearly tappable, not buried in copy.</p>
 
   <div class="problem-grid">
     <div class="problem-visual">
-      <div class="mockup-label bad">❌ Current implementation</div>
-      <div class="ext-frame">
-        <div class="ext-toolbar">
-          <div class="ext-toolbar-icons">
-            <span class="ext-toolbar-icon">‹</span>
-            <span class="ext-toolbar-icon">›</span>
-            <span class="ext-toolbar-icon">↺</span>
-          </div>
-          <div class="ext-toolbar-icons">
-            <span class="ext-toolbar-icon">⚙</span>
-            <span class="ext-toolbar-icon">×</span>
-          </div>
+      <div class="mockup-label bad">❌ Current — ⓘ inline in hero</div>
+      <div class="ext-popup">
+        <div class="ext-popup-logo"><span>G</span></div>
+        <div class="ext-popup-headline">Last chance!</div>
+        <div class="ext-popup-illus">🧺</div>
+        <div class="ext-popup-badge">
+          <span class="ext-popup-badge-icon">↗</span>
+          ON THE RISE
         </div>
-        <div class="ext-content">
-          <div class="ext-logo"><span class="ext-logo-letter">G</span></div>
-          <div class="ext-headline">Last chance!</div>
-          <div class="ext-illustration">🧺</div>
-          <div class="ext-badge">⊕ TOP UP BONUS</div>
-          <div class="ext-value-card">
-            <div class="ext-value-text">
-              5% Cashback + Up to 15€ Top-Up Bonus <span class="ext-info-inline">i</span>
-            </div>
-          </div>
-          <div class="ext-cta">Activate cashback</div>
-          <div class="ext-dismiss">I don't want cashback</div>
+        <div class="ext-popup-value">
+          Up to 7% cashback! <span class="info-inline-current">i</span>
         </div>
+        <div class="ext-popup-sub">instead 3%</div>
+        <div class="ext-popup-cta">Activate cashback</div>
+        <div class="ext-popup-dismiss">I don't want cashback</div>
       </div>
     </div>
 
     <div class="issue-list">
       <div class="issue-item">
-        <div class="issue-title">🔴 Hidden in the hero copy</div>
-        <div class="issue-desc">Users scan value props — they don't read them character by character. A 16px grey circle at the end of a bold sentence is invisible. The eye goes: number → "Cashback" → CTA button. The ⓘ lives in no-man's land.</div>
+        <div class="issue-title">🔴 Invisible trigger</div>
+        <div class="issue-desc">Users scan the hero number ("7%") and go straight to the CTA. A small grey circle at the end of the sentence is in the eye's blind spot — it's not part of the reading pattern.</div>
       </div>
       <div class="issue-item">
-        <div class="issue-title">🔴 Wrong semantic weight</div>
-        <div class="issue-desc">This ⓘ links to offer terms and conditions — legally required info. Mid-sentence placement signals "minor footnote." Offer terms deserve their own clearly-labelled surface, not an afterthought icon.</div>
+        <div class="issue-title">🔴 Pollutes the hero message</div>
+        <div class="issue-desc">"Up to 7% cashback!" is the hook. The ⓘ adds visual noise to the single most important line. The trigger is a secondary action — it shouldn't live inside the primary message.</div>
       </div>
       <div class="issue-item">
-        <div class="issue-title">🔴 Visual noise in the value prop</div>
-        <div class="issue-desc">"5% Cashback + Up to 15€ Top-Up Bonus" is the single most important line. The ⓘ creates visual clutter right where the design needs to be clean and scannable. It's adding UI where the message needs to breathe.</div>
+        <div class="issue-title">🔴 No affordance it's clickable</div>
+        <div class="issue-desc">A grey outline circle doesn't signal "click me for more info." On desktop, there's no hover state visible, no label, no underline — nothing that says "this is interactive."</div>
       </div>
-      <div class="issue-item context">
-        <div class="issue-title">🔵 Desktop ≠ mobile, but the principle holds</div>
-        <div class="issue-desc">On desktop, cursor precision means a small icon is technically clickable. But discoverability and hierarchy are platform-agnostic problems. Users don't hover random characters looking for tooltips.</div>
+      <div class="issue-item info">
+        <div class="issue-title">🔵 The trigger opens a separate popup</div>
+        <div class="issue-desc">This ⓘ doesn't need to hold content — it just needs to be a clear, clickable trigger. That simplifies the problem: we only need to nail placement and styling.</div>
       </div>
     </div>
   </div>
@@ -710,47 +481,33 @@
 <!-- PATTERNS -->
 <div class="section">
   <div class="section-label">02 — Proposed Patterns</div>
-  <div class="section-title">3 ways to fix it</div>
-  <p class="section-desc">Each pattern separates the ⓘ from the hero copy and gives it proper affordance. Ranked by fit for a narrow extension popup.</p>
+  <div class="section-title">3 trigger placements</div>
+  <p class="section-desc">Each moves the ⓘ out of the hero copy and gives it proper visual weight as a standalone trigger. Clean white backgrounds, no grey boxes.</p>
 
   <div class="pattern-grid">
 
-    <!-- PATTERN A: Link chip below value → Dropdown -->
+    <!-- PATTERN A: Standalone labelled trigger below value -->
     <div class="pattern-card recommended">
       <div class="pattern-preview">
-        <div style="display:flex; flex-direction:column; align-items:center; gap:12px; width:100%;">
-          <div class="mini-ext">
-            <div class="mini-ext-bar">
-              <span>⚙</span><span>×</span>
-            </div>
-            <div class="mini-ext-body">
-              <div class="mini-logo"><span>G</span></div>
-              <div class="mini-headline">Last chance!</div>
-              <div class="mini-illus">🧺</div>
-              <div class="mini-badge">⊕ TOP UP BONUS</div>
-              <div class="mini-value-card">
-                <div class="mini-value-text">5% Cashback + Up to 15€ Top-Up Bonus</div>
-              </div>
-              <!-- THE FIX: Link chip below -->
-              <div style="display:flex; align-items:center; justify-content:center; gap:5px; cursor:pointer; padding:4px 0;">
-                <div class="mini-info-btn filled" style="width:14px; height:14px; font-size:8px;">i</div>
-                <span style="font-size:10px; color:#7c3aed; font-weight:600;">How it works</span>
-              </div>
-              <!-- Dropdown shown -->
-              <div class="mini-dropdown">
-                <div class="mini-dropdown-title">How Top-Up Bonus works</div>
-                <div class="mini-dropdown-body">
-                  • Top up ≥20€ to unlock 5% cashback<br>
-                  • Max 15€ bonus per top-up<br>
-                  • Credited within 3 business days<br>
-                  • Valid until 30 April 2026<br>
-                  <span style="color:#7c3aed; font-weight:600; margin-top:4px; display:inline-block;">Full terms →</span>
-                </div>
-              </div>
-              <div class="mini-cta">Activate cashback</div>
-              <div class="mini-dismiss">I don't want cashback</div>
-            </div>
+        <div class="ext-popup" style="width:240px; padding:24px 20px; gap:4px;">
+          <div class="ext-popup-logo" style="top:16px; left:16px; width:24px; height:24px;"><span style="font-size:12px;">G</span></div>
+          <div class="ext-popup-headline" style="font-size:18px; margin-top:4px;">Last chance!</div>
+          <div style="font-size:48px; text-align:center; line-height:1; margin:6px 0;">🧺</div>
+          <div class="ext-popup-badge" style="font-size:9px; padding:4px 10px;">
+            <span style="font-size:11px; color:#FD5A13;">↗</span>
+            ON THE RISE
           </div>
+          <div style="font-size:20px; font-weight:800; color:#1c1c1e; text-align:center; margin-top:8px;">Up to 7% cashback!</div>
+          <div style="font-size:13px; color:#999; text-align:center;">instead 3%</div>
+          <!-- TRIGGER: standalone labelled row -->
+          <div style="display:flex; align-items:center; justify-content:center; gap:6px; margin:10px 0; cursor:pointer;">
+            <div style="width:20px; height:20px; border-radius:50%; background:#FD5A13; display:flex; align-items:center; justify-content:center;">
+              <span style="color:white; font-size:11px; font-weight:800;">i</span>
+            </div>
+            <span style="font-size:12px; color:#FD5A13; font-weight:600;">How it works</span>
+          </div>
+          <div class="ext-popup-cta" style="padding:13px; font-size:13px; margin-top:4px;">Activate cashback</div>
+          <div class="ext-popup-dismiss" style="font-size:11px; margin-top:4px;">I don't want cashback</div>
         </div>
       </div>
       <div class="pattern-info">
@@ -758,269 +515,241 @@
           <div class="pattern-number">Pattern A</div>
           <div class="badge best">⭐ Recommended</div>
         </div>
-        <div class="pattern-name">Link chip → Inline dropdown</div>
-        <div class="pattern-desc">A small "How it works" link with ⓘ icon sits below the value card, above the CTA. Click expands an inline dropdown with offer details. No overlay needed — it pushes content down within the extension frame.</div>
+        <div class="pattern-name">Labelled ⓘ trigger</div>
+        <div class="pattern-desc">The ⓘ becomes a standalone element with a text label — "How it works." Sits between the value text and the CTA. Filled brand-orange icon + orange label text. Clear, findable, obviously clickable.</div>
         <div class="pros-cons">
-          <div class="pro">Hero copy stays clean — zero visual noise</div>
-          <div class="pro">Clearly labelled — users know what they'll get</div>
-          <div class="pro">No overlay management — dropdown is inline, scrollable</div>
-          <div class="pro">Works perfectly in narrow extension width</div>
-          <div class="note">Best when details are 3–6 bullet points</div>
+          <div class="pro">Hero copy is completely clean</div>
+          <div class="pro">Label tells users exactly what they'll get</div>
+          <div class="pro">Brand-coloured icon draws the eye without being loud</div>
+          <div class="pro">Clear click affordance — icon + text = button behaviour</div>
+          <div class="note">Cursor: pointer on hover, underline on label</div>
         </div>
       </div>
     </div>
 
-    <!-- PATTERN B: ⓘ icon right-aligned in value card → Tooltip -->
+    <!-- PATTERN B: Subtle icon next to "instead 3%" -->
     <div class="pattern-card">
       <div class="pattern-preview">
-        <div style="display:flex; flex-direction:column; align-items:center; gap:12px; width:100%;">
-          <div class="mini-ext">
-            <div class="mini-ext-bar">
-              <span>⚙</span><span>×</span>
-            </div>
-            <div class="mini-ext-body">
-              <div class="mini-logo"><span>G</span></div>
-              <div class="mini-headline">Last chance!</div>
-              <div class="mini-illus">🧺</div>
-              <div class="mini-badge">⊕ TOP UP BONUS</div>
-              <!-- Value card with ⓘ in corner -->
-              <div style="background:#f5f5f7; border-radius:10px; padding:10px 12px; width:100%; position:relative;">
-                <div style="position:absolute; top:8px; right:8px;">
-                  <div class="mini-info-btn ghost" style="width:20px; height:20px; font-size:11px; cursor:pointer;">i</div>
-                </div>
-                <div class="mini-value-text" style="padding-right:24px;">5% Cashback + Up to 15€ Top-Up Bonus</div>
-              </div>
-              <!-- Tooltip shown -->
-              <div class="mini-tooltip">
-                Top up ≥20€ to unlock 5% cashback. Max 15€ bonus per top-up. Credited within 3 business days. Valid until 30 April 2026.
-              </div>
-              <div class="mini-cta">Activate cashback</div>
-              <div class="mini-dismiss">I don't want cashback</div>
+        <div class="ext-popup" style="width:240px; padding:24px 20px; gap:4px;">
+          <div class="ext-popup-logo" style="top:16px; left:16px; width:24px; height:24px;"><span style="font-size:12px;">G</span></div>
+          <div class="ext-popup-headline" style="font-size:18px; margin-top:4px;">Last chance!</div>
+          <div style="font-size:48px; text-align:center; line-height:1; margin:6px 0;">🧺</div>
+          <div class="ext-popup-badge" style="font-size:9px; padding:4px 10px;">
+            <span style="font-size:11px; color:#FD5A13;">↗</span>
+            ON THE RISE
+          </div>
+          <div style="font-size:20px; font-weight:800; color:#1c1c1e; text-align:center; margin-top:8px;">Up to 7% cashback!</div>
+          <!-- TRIGGER: beside the secondary text -->
+          <div style="display:flex; align-items:center; justify-content:center; gap:6px;">
+            <span style="font-size:13px; color:#999;">instead 3%</span>
+            <div style="width:18px; height:18px; border-radius:50%; border:1.5px solid #FD5A13; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+              <span style="color:#FD5A13; font-size:10px; font-weight:700;">i</span>
             </div>
           </div>
+          <div class="ext-popup-cta" style="padding:13px; font-size:13px; margin-top:14px;">Activate cashback</div>
+          <div class="ext-popup-dismiss" style="font-size:11px; margin-top:4px;">I don't want cashback</div>
         </div>
       </div>
       <div class="pattern-info">
         <div style="display:flex; gap:8px; align-items:center; margin-bottom:6px;">
           <div class="pattern-number">Pattern B</div>
-          <div class="badge good">Good alternative</div>
+          <div class="badge good">Clean option</div>
         </div>
-        <div class="pattern-name">ⓘ in card corner → Tooltip</div>
-        <div class="pattern-desc">Move the ⓘ to the top-right corner of the value card — out of the text flow but clearly "owned" by this card. Hover/click shows a tooltip with offer terms. On desktop, hover works naturally.</div>
+        <div class="pattern-name">ⓘ beside secondary text</div>
+        <div class="pattern-desc">Move the ⓘ next to "instead 3%" — the comparison line. It's semantically paired with the detail it explains, and it's out of the hero. Orange outline icon to match the brand. No label needed since the context is clear.</div>
         <div class="pros-cons">
-          <div class="pro">Minimal footprint — doesn't add extra vertical space</div>
-          <div class="pro">Familiar pattern — users expect corner icons on cards</div>
-          <div class="pro">Desktop hover makes it low-friction</div>
-          <div class="con">Tooltip has limited space — bad for long T&Cs</div>
-          <div class="con">Less discoverable than a labelled link</div>
+          <div class="pro">Hero stays completely untouched</div>
+          <div class="pro">Semantically linked to the comparison ("why 7% instead of 3%?")</div>
+          <div class="pro">Compact — no extra vertical space needed</div>
+          <div class="con">No label — slightly less discoverable than Pattern A</div>
+          <div class="con">Smaller click target (icon only, ~18px)</div>
         </div>
       </div>
     </div>
 
-    <!-- PATTERN C: Text link below CTA -->
+    <!-- PATTERN C: Underline link in its own row -->
     <div class="pattern-card">
       <div class="pattern-preview">
-        <div style="display:flex; flex-direction:column; align-items:center; gap:12px; width:100%;">
-          <div class="mini-ext">
-            <div class="mini-ext-bar">
-              <span>⚙</span><span>×</span>
-            </div>
-            <div class="mini-ext-body">
-              <div class="mini-logo"><span>G</span></div>
-              <div class="mini-headline">Last chance!</div>
-              <div class="mini-illus">🧺</div>
-              <div class="mini-badge">⊕ TOP UP BONUS</div>
-              <div class="mini-value-card">
-                <div class="mini-value-text">5% Cashback + Up to 15€ Top-Up Bonus</div>
-              </div>
-              <div class="mini-cta">Activate cashback</div>
-              <!-- Terms link below everything -->
-              <div style="display:flex; align-items:center; justify-content:center; gap:8px; padding:2px 0;">
-                <span style="font-size:10px; color:#999; text-decoration:underline; cursor:pointer;">Offer terms & conditions</span>
-              </div>
-              <div class="mini-dismiss">I don't want cashback</div>
-            </div>
+        <div class="ext-popup" style="width:240px; padding:24px 20px; gap:4px;">
+          <div class="ext-popup-logo" style="top:16px; left:16px; width:24px; height:24px;"><span style="font-size:12px;">G</span></div>
+          <div class="ext-popup-headline" style="font-size:18px; margin-top:4px;">Last chance!</div>
+          <div style="font-size:48px; text-align:center; line-height:1; margin:6px 0;">🧺</div>
+          <div class="ext-popup-badge" style="font-size:9px; padding:4px 10px;">
+            <span style="font-size:11px; color:#FD5A13;">↗</span>
+            ON THE RISE
           </div>
+          <div style="font-size:20px; font-weight:800; color:#1c1c1e; text-align:center; margin-top:8px;">Up to 7% cashback!</div>
+          <div style="font-size:13px; color:#999; text-align:center;">instead 3%</div>
+          <!-- TRIGGER: text link with subtle underline -->
+          <div style="margin:8px 0; cursor:pointer; text-align:center;">
+            <span style="font-size:11px; color:#FD5A13; font-weight:500; text-decoration:underline; text-decoration-style:dashed; text-underline-offset:3px; text-decoration-color:rgba(253,90,19,0.4);">See offer details</span>
+          </div>
+          <div class="ext-popup-cta" style="padding:13px; font-size:13px; margin-top:4px;">Activate cashback</div>
+          <div class="ext-popup-dismiss" style="font-size:11px; margin-top:4px;">I don't want cashback</div>
         </div>
       </div>
       <div class="pattern-info">
         <div style="display:flex; gap:8px; align-items:center; margin-bottom:6px;">
           <div class="pattern-number">Pattern C</div>
-          <div class="badge alt">Simplest</div>
+          <div class="badge alt">Minimal</div>
         </div>
-        <div class="pattern-name">Plain text link below CTA</div>
-        <div class="pattern-desc">No icon at all. Just a subtle underlined text link — "Offer terms & conditions" — positioned between the CTA and the dismiss link. Clicking opens details inline or navigates to a terms page. Zero visual weight on the hero.</div>
+        <div class="pattern-name">Text link — no icon</div>
+        <div class="pattern-desc">Skip the ⓘ icon entirely. Use a simple dashed-underline text link — "See offer details" — in brand orange. Sits between the value text and the CTA. Lightest possible touch, maximum clarity.</div>
         <div class="pros-cons">
-          <div class="pro">Cleanest possible hero — absolutely zero clutter</div>
-          <div class="pro">Honest framing — "terms" not hiding behind an icon</div>
-          <div class="pro">Easiest to implement — just a link</div>
-          <div class="con">Lower discoverability — blends with dismiss link</div>
-          <div class="con">No icon affordance — some users won't register it</div>
-          <div class="note">Best when legal compliance is the main driver</div>
+          <div class="pro">Cleanest possible layout — zero visual clutter</div>
+          <div class="pro">Obvious click affordance (underlined text = link)</div>
+          <div class="pro">Easiest to implement — just an anchor tag</div>
+          <div class="con">No icon — may not pattern-match for users expecting ⓘ</div>
+          <div class="note">Good if you want to de-emphasise the details trigger</div>
         </div>
       </div>
     </div>
 
   </div>
+
+  <!-- ANTI-PATTERN reminder -->
+  <div style="margin-top:32px;">
+    <div class="anti-card" style="max-width:400px;">
+      <div class="anti-preview">
+        <div style="background:white; border-radius:12px; padding:14px 20px; text-align:center; box-shadow:0 4px 16px rgba(0,0,0,0.15);">
+          <div style="font-size:18px; font-weight:800; color:#1c1c1e; line-height:1.4;">
+            Up to 7% cashback! <span style="display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border:1.5px solid #ccc; border-radius:50%; font-size:10px; color:#bbb; vertical-align:middle; margin-left:4px;">i</span>
+          </div>
+          <div style="font-size:12px; color:#999; margin-top:4px;">instead 3%</div>
+        </div>
+      </div>
+      <div class="anti-info">
+        <div style="display:flex; gap:8px; align-items:center; margin-bottom:6px;">
+          <div class="pattern-number">Current</div>
+          <div class="badge avoid">❌ Don't do this</div>
+        </div>
+        <div style="font-size:13px; color:var(--muted);">Grey icon embedded in hero copy. Invisible, no affordance, adds noise to the most important line.</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- COMPARISON -->
+<!-- HOVER / INTERACTION STATES -->
 <div class="section">
-  <div class="section-label">03 — Comparison</div>
-  <div class="section-title">Pattern decision matrix</div>
-  <p class="section-desc">How each pattern scores across key criteria for a desktop browser extension popup.</p>
+  <div class="section-label">03 — Interaction States</div>
+  <div class="section-title">How the trigger should behave</div>
+  <p class="section-desc">Since this is desktop, hover states are critical. The trigger needs to signal "I'm clickable" before and during hover.</p>
 
-  <div class="comparison-wrap">
-    <table class="comparison-table">
-      <thead>
-        <tr>
-          <th>Pattern</th>
-          <th>Hero stays clean</th>
-          <th>Discoverable</th>
-          <th>Detail capacity</th>
-          <th>Extension-friendly</th>
-          <th>Implementation effort</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="td-pattern">A — Link chip + dropdown</td>
-          <td><span class="check">✓ Fully clean</span></td>
-          <td><span class="check">✓ Labelled link</span></td>
-          <td><span class="check">✓ Rich (bullets, links)</span></td>
-          <td><span class="check">✓ Inline, no overlay</span></td>
-          <td>Medium</td>
-        </tr>
-        <tr>
-          <td class="td-pattern">B — Card corner ⓘ + tooltip</td>
-          <td><span class="check">✓ Clean (icon in corner)</span></td>
-          <td>Moderate</td>
-          <td><span class="cross">Limited (1–3 lines)</span></td>
-          <td><span class="check">✓ Compact</span></td>
-          <td>Low</td>
-        </tr>
-        <tr>
-          <td class="td-pattern">C — Plain text link</td>
-          <td><span class="check">✓ Cleanest</span></td>
-          <td><span class="cross">Low — blends in</span></td>
-          <td><span class="check">✓ Full page or dropdown</span></td>
-          <td><span class="check">✓ Minimal</span></td>
-          <td>Very low</td>
-        </tr>
-        <tr style="opacity:0.5;">
-          <td class="td-pattern" style="color:#f87171;">Current — inline ⓘ in copy</td>
-          <td><span class="cross">✗ Pollutes hero</span></td>
-          <td><span class="cross">✗ Nearly invisible</span></td>
-          <td>Unknown (no reveal shown)</td>
-          <td>N/A</td>
-          <td>—</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="states-grid">
+    <div class="state-card">
+      <div class="state-label">Default</div>
+      <div class="state-demo">
+        <div style="width:20px; height:20px; border-radius:50%; background:#FD5A13; display:flex; align-items:center; justify-content:center;">
+          <span style="color:white; font-size:11px; font-weight:800;">i</span>
+        </div>
+        <span style="font-size:12px; color:#FD5A13; font-weight:600;">How it works</span>
+      </div>
+      <div class="state-desc">Filled orange ⓘ + orange label. Clearly a separate element from the hero text.</div>
+    </div>
+    <div class="state-card">
+      <div class="state-label">Hover</div>
+      <div class="state-demo" style="background:#FFF9F5;">
+        <div style="width:20px; height:20px; border-radius:50%; background:#e04d0d; display:flex; align-items:center; justify-content:center;">
+          <span style="color:white; font-size:11px; font-weight:800;">i</span>
+        </div>
+        <span style="font-size:12px; color:#e04d0d; font-weight:600; text-decoration:underline; text-underline-offset:2px;">How it works</span>
+      </div>
+      <div class="state-desc">Darken icon + underline label. Cursor: pointer. Optional: subtle warm background tint.</div>
+    </div>
+    <div class="state-card">
+      <div class="state-label">Active / Pressed</div>
+      <div class="state-demo" style="background:#FFF3E8;">
+        <div style="width:20px; height:20px; border-radius:50%; background:#c44009; display:flex; align-items:center; justify-content:center; transform:scale(0.95);">
+          <span style="color:white; font-size:11px; font-weight:800;">i</span>
+        </div>
+        <span style="font-size:12px; color:#c44009; font-weight:600; text-decoration:underline;">How it works</span>
+      </div>
+      <div class="state-desc">Further darken + slight scale-down on icon (95%). Then opens the details popup.</div>
+    </div>
   </div>
 </div>
 
 <!-- RECOMMENDATION -->
 <div class="section">
   <div class="section-label">04 — Recommendation</div>
-  <div class="section-title">What Daria should build</div>
-  <p class="section-desc">For the iGraal cashback extension modal, Pattern A is the best fit. Here's the exact spec.</p>
+  <div class="section-title">What to build</div>
+  <p class="section-desc">Pattern A is the best fit. Here's the spec for Daria.</p>
 
   <div class="rec-card primary">
     <div style="display:inline-flex; gap:8px; align-items:center; margin-bottom:16px;">
-      <div class="badge best">⭐ Primary recommendation</div>
+      <div class="badge best">⭐ Build this</div>
     </div>
-    <div class="rec-card-title">Pattern A — "How it works" chip → Inline dropdown</div>
-    <div class="rec-card-desc">Remove the ⓘ from the value proposition text entirely. Add a clearly-labelled link element between the value card and the CTA button. On click, expand an inline details section with offer terms. The hero copy stays punchy and scannable.</div>
+    <div class="rec-card-title">Pattern A — Labelled ⓘ trigger</div>
+    <div class="rec-card-desc">Remove the ⓘ from the "Up to 7% cashback!" line entirely. Add a standalone trigger element between the value text and the CTA button. On click, it opens the existing details popup — no new surfaces to build.</div>
     <div class="spec-list">
       <div class="spec-item">
-        <div class="spec-dot purple"></div>
-        <div class="spec-content"><strong>Position:</strong> Below value card, above "Activate cashback" CTA — vertically centered between them</div>
+        <div class="spec-dot orange"></div>
+        <div class="spec-content"><strong>Position:</strong> Centred, below "instead 3%", above the CTA — with ~12px spacing above and below</div>
       </div>
       <div class="spec-item">
-        <div class="spec-dot purple"></div>
-        <div class="spec-content"><strong>Element:</strong> Inline flex row — filled ⓘ icon (14px, brand purple) + text label "How it works" (purple, 12px, semibold)</div>
+        <div class="spec-dot orange"></div>
+        <div class="spec-content"><strong>Layout:</strong> Inline-flex row — circle icon (20px) + text label (12px semibold) with 6px gap</div>
       </div>
       <div class="spec-item">
-        <div class="spec-dot purple"></div>
-        <div class="spec-content"><strong>Hover state:</strong> Underline on label text, slight opacity shift on icon — standard link affordance</div>
+        <div class="spec-dot orange"></div>
+        <div class="spec-content"><strong>Icon:</strong> Filled circle, iGraal orange (#FD5A13), white "i" — not outline, not grey</div>
       </div>
       <div class="spec-item">
-        <div class="spec-dot purple"></div>
-        <div class="spec-content"><strong>Click behaviour:</strong> Expand inline dropdown below the chip — push CTA and dismiss link down. No popover/overlay (avoids z-index issues in extension frame)</div>
+        <div class="spec-dot orange"></div>
+        <div class="spec-content"><strong>Label:</strong> "How it works" in iGraal orange, 12px, semibold (600)</div>
       </div>
       <div class="spec-item">
-        <div class="spec-dot purple"></div>
-        <div class="spec-content"><strong>Dropdown content:</strong> Title ("How Top-Up Bonus works") + bullet list (eligibility, cashback cap, credit timeline, validity) + optional "Full terms →" link</div>
+        <div class="spec-dot orange"></div>
+        <div class="spec-content"><strong>Hover:</strong> Darken to #e04d0d, underline label, cursor: pointer, optional warm bg tint</div>
       </div>
       <div class="spec-item">
-        <div class="spec-dot purple"></div>
-        <div class="spec-content"><strong>Collapse:</strong> Click the chip again to toggle closed. Also auto-collapse if user clicks "Activate cashback"</div>
+        <div class="spec-dot orange"></div>
+        <div class="spec-content"><strong>Click:</strong> Opens the existing details popup — same as current ⓘ behaviour</div>
       </div>
       <div class="spec-item">
-        <div class="spec-dot purple"></div>
-        <div class="spec-content"><strong>Animation:</strong> Smooth height transition (200ms ease-out) — no jarring pop</div>
+        <div class="spec-dot orange"></div>
+        <div class="spec-content"><strong>Transition:</strong> Color and underline transitions at 150ms ease — no jarring state changes</div>
       </div>
     </div>
   </div>
 
-  <div class="rec-card">
-    <div style="display:inline-flex; gap:8px; align-items:center; margin-bottom:16px;">
-      <div class="badge good">Fallback</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+    <div class="rec-card">
+      <div style="display:inline-flex; gap:8px; align-items:center; margin-bottom:12px;">
+        <div class="badge good">Alternative</div>
+      </div>
+      <div class="rec-card-title" style="font-size:16px;">Pattern B — ⓘ beside "instead 3%"</div>
+      <div class="rec-card-desc" style="font-size:13px;">If the team wants the trigger to be more subtle — icon only, no label, paired with the comparison text. More compact but less discoverable.</div>
     </div>
-    <div class="rec-card-title">Pattern B — if details are minimal (1–2 lines)</div>
-    <div class="rec-card-desc">If the offer terms can be expressed in a single sentence ("5% cashback on top-ups ≥20€, max 15€, valid until 30 Apr"), use the card-corner ⓘ with a tooltip on hover. Simpler to build, but only works for very short content.</div>
-  </div>
-
-  <!-- NALU COMPONENT MAPPING -->
-  <div class="nalu-section">
-    <div class="nalu-title">
-      <span>🧩 Nalu Component Mapping</span>
-      <span class="nalu-tag">Optional — if Daria adopts Nalu</span>
-    </div>
-    <div class="nalu-grid">
-      <div class="nalu-item">
-        <div class="nalu-item-title">Info chip</div>
-        <div class="nalu-item-desc">Use <code>NaluLink</code> or <code>NaluButton variant="ghost"</code> with icon slot for the "How it works" trigger. Style with iGraal brand purple.</div>
+    <div class="rec-card">
+      <div style="display:inline-flex; gap:8px; align-items:center; margin-bottom:12px;">
+        <div class="badge alt">Fallback</div>
       </div>
-      <div class="nalu-item">
-        <div class="nalu-item-title">Dropdown panel</div>
-        <div class="nalu-item-desc">Use <code>NaluCollapsible</code> or build a simple expand/collapse with CSS transitions. Content is a <code>NaluText</code> block with bullet list.</div>
-      </div>
-      <div class="nalu-item">
-        <div class="nalu-item-title">Tooltip (Pattern B)</div>
-        <div class="nalu-item-desc">Use <code>NaluTooltip</code> if available, or a positioned <code>NaluPopover</code> triggered on hover. Dark background, light text, 8px radius.</div>
-      </div>
-      <div class="nalu-item">
-        <div class="nalu-item-title">Icon</div>
-        <div class="nalu-item-desc">Use <code>NaluIcon name="info"</code> — filled variant, not outline. 14px in the chip, 18px in the card corner (Pattern B).</div>
-      </div>
+      <div class="rec-card-title" style="font-size:16px;">Pattern C — text link, no icon</div>
+      <div class="rec-card-desc" style="font-size:13px;">If the ⓘ icon isn't needed at all — a simple "See offer details" link does the job with zero visual overhead.</div>
     </div>
   </div>
 </div>
 
-<!-- CONTEXT -->
+<!-- PRINCIPLES -->
 <div class="section">
-  <div class="section-label">05 — Design Principles Applied</div>
-  <div class="section-title">Why this matters</div>
-  <p class="section-desc" style="max-width: none;">
-    Three UX principles at play:
-  </p>
+  <div class="section-label">05 — Why It Matters</div>
+  <div class="section-title">The principle</div>
   <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
     <div class="rec-card" style="margin:0;">
       <div style="font-size:24px; margin-bottom:12px;">👁️</div>
-      <div class="rec-card-title" style="font-size:16px;">Visual Hierarchy</div>
-      <div class="rec-card-desc" style="font-size:13px;">The value proposition is the #1 element. Nothing should compete with it visually. The ⓘ icon — no matter how small — adds noise to the one line that needs to be effortless to read.</div>
-    </div>
-    <div class="rec-card" style="margin:0;">
-      <div style="font-size:24px; margin-bottom:12px;">📐</div>
-      <div class="rec-card-title" style="font-size:16px;">Progressive Disclosure</div>
-      <div class="rec-card-desc" style="font-size:13px;">Show the minimum needed to decide, reveal detail on demand. The hero sells the offer. The "How it works" link serves users who want more. Two layers, two purposes — don't merge them.</div>
+      <div class="rec-card-title" style="font-size:16px;">Separate primary from secondary</div>
+      <div class="rec-card-desc" style="font-size:13px;">The value prop is primary — it sells. The details trigger is secondary — it informs. They shouldn't share the same line. Different jobs, different elements.</div>
     </div>
     <div class="rec-card" style="margin:0;">
       <div style="font-size:24px; margin-bottom:12px;">🎯</div>
-      <div class="rec-card-title" style="font-size:16px;">Fitts's Law (desktop variant)</div>
-      <div class="rec-card-desc" style="font-size:13px;">On desktop, click accuracy is high but attention is scarce. A labelled link is faster to parse than a mystery icon. Users shouldn't have to decode what the ⓘ does — the label tells them.</div>
+      <div class="rec-card-title" style="font-size:16px;">Label > mystery icon</div>
+      <div class="rec-card-desc" style="font-size:13px;">A labelled trigger ("How it works") is faster to parse than a bare ⓘ. On desktop, screen space isn't tight enough to justify icon-only. Say what it does.</div>
+    </div>
+    <div class="rec-card" style="margin:0;">
+      <div style="font-size:24px; margin-bottom:12px;">🎨</div>
+      <div class="rec-card-title" style="font-size:16px;">Brand orange, not grey</div>
+      <div class="rec-card-desc" style="font-size:13px;">A grey outline circle signals "disabled" or "footnote." iGraal orange signals "this is ours, this is interactive." Use the brand — that's what it's for.</div>
     </div>
   </div>
 </div>
@@ -1029,11 +758,11 @@
 <div class="footer">
   <div>
     <strong>UX Designer</strong> · Dopamine team<br>
-    iGraal Extension · Info Icon Brief · April 2, 2026
+    iGraal Extension · Info Trigger Brief · April 2, 2026
   </div>
   <div style="text-align:right;">
     Based on: Scout Research — Info Icon Pattern Taxonomy<br>
-    References: NNGroup, iOS HIG, Material Design 3, Extension UX Guidelines
+    Platform: Desktop browser extension popup
   </div>
 </div>
 
